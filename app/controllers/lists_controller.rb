@@ -10,7 +10,7 @@ class ListsController < ApplicationController
     
     list.save
     
-    redirect_to '/top'
+    redirect_to list_path(list.id)
   end
 
 def index
@@ -19,11 +19,17 @@ def index
   
 end
 
-
+def show
+  @list = List.find(params[:id])
+end
+  
 private
 
 def list_params
   params.require(:list).permit(:title, :body)
 end
+
+
+
 
 end
